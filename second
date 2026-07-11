@@ -1,0 +1,29 @@
+passwords = input("Enter passwords separated by comma: ")
+passwords = passwords.split(",")
+
+valid = []
+
+for password in passwords:
+
+    if len(password) < 6 or len(password) > 12:
+        continue
+
+    lower = 0
+    upper = 0
+    digit = 0
+    special = 0
+
+    for ch in password:
+        if ch >= 'a' and ch <= 'z':
+            lower = 1
+        elif ch >= 'A' and ch <= 'Z':
+            upper = 1
+        elif ch >= '0' and ch <= '9':
+            digit = 1
+        elif ch == '$' or ch == '#' or ch == '@':
+            special = 1
+
+    if lower and upper and digit and special:
+        valid.append(password)
+
+print(",".join(valid))
